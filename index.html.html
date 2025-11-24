@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edukasi Phishing - Lindungi Diri Anda</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --success: #2ecc71;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .tab:hover {
+            background-color: var(--light);
+        }
+        
+        .tab.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .warning-box {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .danger-box {
+            background-color: #ffebee;
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .success-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .option {
+            padding: 0.8rem 1rem;
+            background: var(--light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background: #d6dbdf;
+        }
+        
+        .option.selected {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .option.correct {
+            background: var(--success);
+            color: white;
+        }
+        
+        .option.incorrect {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover {
+            background: #27ae60;
+        }
+        
+        .interactive-example {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .email-example {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            margin: 1rem 0;
+        }
+        
+        .email-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .email-subject {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .email-from {
+            color: #666;
+        }
+        
+        .email-body {
+            line-height: 1.6;
+        }
+        
+        .suspicious-element {
+            background-color: #ffebee;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .suspicious-element:hover {
+            background-color: #ffcdd2;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Edukasi Phishing</h1>
+	<h1>Kelompok 6 </h1>
+	<p>Dheva Chandra Amathyas 230106153</p>
+	<p>Ristiana Zaharani 230106154</p>
+	<p>Aulia Putri Utamisyah 230106155</p>
+	<p>Ayesha Alya Natiqa 230106156</p>
+	<p>Rizki Nurbaiti 230106158</p>
+
+	
+            <p>Pelajari, Kenali, dan Lindungi Diri dari Serangan Phishing</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <div class="tab active" data-tab="intro">Pengenalan</div>
+            <div class="tab" data-tab="types">Jenis-Jenis</div>
+            <div class="tab" data-tab="identify">Cara Mengenali</div>
+            <div class="tab" data-tab="prevent">Pencegahan</div>
+            <div class="tab" data-tab="quiz">Kuis Interaktif</div>
+            <div class="tab" data-tab="example">Contoh Phishing</div>
+        </div>
+        
+        <div id="intro" class="tab-content active">
+            <div class="card">
+                <h2>Apa Itu Phishing?</h2>
+                <p>Phishing adalah upaya penipuan dengan menyamar sebagai entitas atau organisasi tepercaya untuk mencuri informasi sensitif seperti nama pengguna, kata sandi, dan detail kartu kredit.</p>
+                
+                <div class="warning-box">
+                    <p><strong>Perhatian:</strong> Serangan phishing terus meningkat dan menjadi lebih canggih. Pada tahun 2022, lebih dari 80% serangan keamanan siber dimulai dengan phishing.</p>
+                </div>
+                
+                <h3>Mengapa Phishing Berbahaya?</h3>
+                <ul>
+                    <li>Dapat mengakibatkan pencurian identitas</li>
+                    <li>Kerugian finansial yang signifikan</li>
+                    <li>Penyebaran malware dan ransomware</li>
+                    <li>Akses tidak sah ke akun pribadi dan perusahaan</li>
+                </ul>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Organisasi Mengalami Serangan Phishing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">36%</div>
+                    <div class="stat-label">Pelanggaran Data Dimulai dengan Phishing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$4.65M</div>
+                    <div class="stat-label">Rata-rata Kerugian per Insiden</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="types" class="tab-content">
+            <div class="card">
+                <h2>Jenis-Jenis Serangan Phishing</h2>
+                
+                <h3>1. Email Phishing</h3>
+                <p>Serangan phishing yang dilakukan melalui email. Penyerang mengirim email yang tampak sah dari organisasi tepercaya seperti bank, media sosial, atau layanan online.</p>
+                
+                <h3>2. Spear Phishing</h3>
+                <p>Serangan phishing yang ditargetkan kepada individu atau organisasi tertentu. Penyerang melakukan riset mendalam tentang target untuk membuat pesan yang lebih personal dan meyakinkan.</p>
+                
+                <h3>3. Whaling</h3>
+                <p>Jenis spear phishing yang menargetkan eksekutif tingkat tinggi atau individu penting dalam organisasi.</p>
+                
+                <h3>4. Smishing</h3>
+                <p>Phishing melalui pesan teks (SMS). Korban menerima pesan teks yang berisi tautan berbahaya atau permintaan informasi pribadi.</p>
+                
+                <h3>5. Vishing</h3>
+                <p>Phishing melalui panggilan telepon. Penyerang berpura-pura sebagai perwakilan dari organisasi tepercaya untuk mendapatkan informasi sensitif.</p>
+                
+                <h3>6. Pharming</h3>
+                <p>Teknik yang mengarahkan pengguna ke situs web palsu meskipun mereka mengetik URL yang benar, biasanya dengan memanipulasi sistem DNS.</p>
+            </div>
+        </div>
+        
+        <div id="identify" class="tab-content">
+            <div class="card">
+                <h2>Cara Mengenali Serangan Phishing</h2>
+                
+                <h3>1. Periksa Alamat Pengirim</h3>
+                <p>Periksa dengan cermat alamat email pengirim. Seringkali alamat email phishing memiliki sedikit variasi dari alamat asli.</p>
+                
+                <h3>2. Waspadai Permintaan Informasi Pribadi</h3>
+                <p>Organisasi tepercaya tidak akan meminta informasi sensitif seperti kata sandi atau nomor kartu kredit melalui email.</p>
+                
+                <h3>3. Periksa Tautan dengan Hover</h3>
+                <p>Arahkan kursor ke tautan (tanpa mengklik) untuk melihat URL sebenarnya. Jika terlihat mencurigakan, jangan diklik.</p>
+                
+                <h3>4. Perhatikan Tata Bahasa dan Ejaan</h3>
+                <p>Banyak email phishing mengandung kesalahan tata bahasa dan ejaan yang tidak biasa untuk komunikasi resmi.</p>
+                
+                <h3>5. Waspadai Rasa Urgensi</h3>
+                <p>Phisher sering menciptakan rasa urgensi untuk membuat korban bertindak tanpa berpikir panjang.</p>
+                
+                <h3>6. Periksa Sertifikat Keamanan Situs</h3>
+                <p>Pastikan situs web menggunakan HTTPS dan memiliki sertifikat keamanan yang valid.</p>
+                
+                <div class="success-box">
+                    <p><strong>Tip:</strong> Jika ragu, hubungi organisasi langsung melalui saluran resmi untuk memverifikasi keaslian komunikasi.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="prevent" class="tab-content">
+            <div class="card">
+                <h2>Cara Mencegah dan Melindungi Diri</h2>
+                
+                <h3>1. Gunakan Autentikasi Multi-Faktor (MFA)</h3>
+                <p>MFA menambahkan lapisan keamanan ekstra dengan memerlukan lebih dari satu metode verifikasi untuk masuk ke akun.</p>
+                
+                <h3>2. Perbarui Perangkat Lunak Secara Berkala</h3>
+                <p>Pastikan sistem operasi, browser, dan aplikasi keamanan selalu diperbarui dengan patch terbaru.</p>
+                
+                <h3>3. Gunakan Filter Spam dan Anti-Phishing</h3>
+                <p>Aktifkan filter spam di email dan gunakan ekstensi browser yang dapat mendeteksi situs phishing.</p>
+                
+                <h3>4. Edukasi Diri dan Tim</h3>
+                <p>Pelajari teknik phishing terbaru dan ikuti pelatihan kesadaran keamanan siber.</p>
+                
+                <h3>5. Backup Data Secara Berkala</h3>
+                <p>Lakukan backup data penting secara teratur untuk meminimalkan dampak jika terjadi insiden keamanan.</p>
+                
+                <h3>6. Gunakan Password Manager</h3>
+                <p>Password manager dapat membantu membuat dan menyimpan kata sandi yang kuat dan unik untuk setiap akun.</p>
+                
+                <div class="danger-box">
+                    <p><strong>Peringatan:</strong> Jangan pernah membagikan informasi sensitif melalui email atau telepon tanpa memverifikasi identitas peminta.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="quiz" class="tab-content">
+            <div class="quiz-container">
+                <h2>Kuis Pengetahuan Phishing</h2>
+                <p>Uji pengetahuan Anda tentang phishing dengan kuis interaktif ini!</p>
+                
+                <div id="quiz-questions">
+                    <!-- Pertanyaan kuis akan dimuat di sini oleh JavaScript -->
+                </div>
+                
+                <div id="quiz-results" style="display: none;">
+                    <h3>Hasil Kuis</h3>
+                    <p id="score-text">Skor Anda: <span id="score">0</span>/<span id="total-questions">0</span></p>
+                    <p id="result-message"></p>
+                    <button id="restart-quiz" class="btn">Ulangi Kuis</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="example" class="tab-content">
+            <div class="interactive-example">
+                <h2>Contoh Email Phishing Interaktif</h2>
+                <p>Amati email di bawah ini dan identifikasi elemen-elemen yang mencurigakan:</p>
+                
+                <div class="email-example">
+                    <div class="email-header">
+                        <div class="email-subject tooltip">
+                            <span class="suspicious-element">Penting: Verifikasi Akun Anda Segera!</span>
+                            <span class="tooltiptext">Subjek menciptakan rasa urgensi yang tidak perlu</span>
+                        </div>
+                        <div class="email-from tooltip">
+                            Dari: <span class="suspicious-element">support@secure-bank.com</span>
+                            <span class="tooltiptext">Domain email tidak sesuai dengan bank resmi</span>
+                        </div>
+                    </div>
+                    <div class="email-body">
+                        <p>Kepada Pelanggan yang Terhormat,</p>
+                        <p>Kami mendeteksi aktivitas mencurigakan pada akun Anda. Untuk mencegah pembekuan akun, harap verifikasi informasi Anda dengan mengklik tautan berikut:</p>
+                        <p class="tooltip">
+                            <a href="#" class="suspicious-element">https://secure-bank-verification.com/login</a>
+                            <span class="tooltiptext">URL tidak sesuai dengan domain bank resmi</span>
+                        </p>
+                        <p>Jika tidak dilakukan dalam <span class="suspicious-element tooltip">24 jam<span class="tooltiptext">Membuat tekanan waktu yang tidak wajar</span></span>, akun Anda akan ditangguhkan.</p>
+                        <p>Hormat kami,<br>Tim Keamanan Bank</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Apa yang Mencurigakan dari Email Ini?</h3>
+                    <ul>
+                        <li><strong>Alamat pengirim:</strong> Domain email tidak sesuai dengan bank resmi</li>
+                        <li><strong>Rasa urgensi:</strong> Menekan penerima untuk bertindak cepat</li>
+                        <li><strong>Tautan mencurigakan:</strong> URL tidak mengarah ke situs resmi bank</li>
+                        <li><strong>Permintaan informasi:</strong> Meminta verifikasi informasi melalui email</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Edukasi Phishing. Semua hak dilindungi.</p>
+            <p>Website ini dibuat untuk tujuan edukasi dan kesadaran keamanan siber.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Quiz Data
+        const quizData = [
+            {
+                question: "Apa yang dimaksud dengan phishing?",
+                options: [
+                    "Teknik memancing ikan dengan umpan",
+                    "Serangan siber untuk mencuri informasi sensitif dengan menyamar sebagai entitas tepercaya",
+                    "Jenis malware yang menyebar melalui email",
+                    "Metode enkripsi data"
+                ],
+                correct: 1
+            },
+            {
+                question: "Manakah dari berikut ini yang BUKAN tanda email phishing?",
+                options: [
+                    "Alamat pengirim yang tidak biasa",
+                    "Permintaan informasi pribadi",
+                    "Tautan yang tidak sesuai dengan konten",
+                    "Logo resmi perusahaan"
+                ],
+                correct: 3
+            },
+            {
+                question: "Apa yang harus Anda lakukan jika menerima email yang mencurigakan?",
+                options: [
+                    "Segera klik tautan untuk memverifikasi informasi",
+                    "Hapus email tanpa membukanya",
+                    "Balas email untuk meminta klarifikasi",
+                    "Laporkan sebagai phishing dan hapus email"
+                ],
+                correct: 3
+            },
+            {
+                question: "Manakah dari berikut ini yang merupakan contoh spear phishing?",
+                options: [
+                    "Email massal yang dikirim ke ribuan penerima",
+                    "Email yang ditargetkan ke individu tertentu dengan informasi personal",
+                    "Pesan teks yang berisi tautan berbahaya",
+                    "Panggilan telepon dari seseorang yang mengaku dari bank"
+                ],
+                correct: 1
+            },
+            {
+                question: "Mengapa autentikasi multi-faktor (MFA) penting untuk mencegah phishing?",
+                options: [
+                    "Karena membuat kata sandi lebih kuat",
+                    "Karena mencegah penyerang mengakses akun meskipun mereka memiliki kata sandi",
+                    "Karena mengenkripsi semua komunikasi",
+                    "Karena memblokir semua email mencurigakan"
+                ],
+                correct: 1
+            }
+        ];
+        
+        // Quiz Functionality
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = [];
+        
+        function loadQuiz() {
+            const quizContainer = document.getElementById('quiz-questions');
+            quizContainer.innerHTML = '';
+            
+            if (currentQuestion < quizData.length) {
+                const questionData = quizData[currentQuestion];
+                
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.innerHTML = `
+                    <h3>Pertanyaan ${currentQuestion + 1}/${quizData.length}</h3>
+                    <p>${questionData.question}</p>
+                    <div class="options">
+                        ${questionData.options.map((option, index) => `
+                            <div class="option" data-index="${index}">${option}</div>
+                        `).join('')}
+                    </div>
+                    <button id="next-question" class="btn" style="margin-top: 1rem; display: none;">Lanjut</button>
+                `;
+                
+                quizContainer.appendChild(questionElement);
+                
+                // Add event listeners to options
+                document.querySelectorAll('.option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        // Remove selected class from all options
+                        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected class to clicked option
+                        option.classList.add('selected');
+                        
+                        // Store user's answer
+                        userAnswers[currentQuestion] = parseInt(option.getAttribute('data-index'));
+                        
+                        // Show next button
+                        document.getElementById('next-question').style.display = 'inline-block';
+                    });
+                });
+                
+                // Add event listener to next button
+                document.getElementById('next-question').addEventListener('click', nextQuestion);
+            } else {
+                showResults();
+            }
+        }
+        
+        function nextQuestion() {
+            // Check if answer is correct
+            if (userAnswers[currentQuestion] === quizData[currentQuestion].correct) {
+                score++;
+            }
+            
+            currentQuestion++;
+            loadQuiz();
+        }
+        
+        function showResults() {
+            document.getElementById('quiz-questions').style.display = 'none';
+            document.getElementById('quiz-results').style.display = 'block';
+            
+            document.getElementById('score').textContent = score;
+            document.getElementById('total-questions').textContent = quizData.length;
+            
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            
+            if (percentage >= 80) {
+                message = 'Luar biasa! Anda memiliki pengetahuan yang sangat baik tentang phishing.';
+            } else if (percentage >= 60) {
+                message = 'Bagus! Anda memiliki pemahaman yang baik tentang phishing, tetapi masih ada ruang untuk perbaikan.';
+            } else {
+                message = 'Anda perlu mempelajari lebih lanjut tentang phishing. Tinjau kembali materi di website ini.';
+            }
+            
+            document.getElementById('result-message').textContent = message;
+            
+            // Add event listener to restart button
+            document.getElementById('restart-quiz').addEventListener('click', () => {
+                currentQuestion = 0;
+                score = 0;
+                userAnswers = [];
+                document.getElementById('quiz-questions').style.display = 'block';
+                document.getElementById('quiz-results').style.display = 'none';
+                loadQuiz();
+            });
+        }
+        
+        // Initialize quiz when quiz tab is clicked
+        document.querySelector('.tab[data-tab="quiz"]').addEventListener('click', () => {
+            if (currentQuestion === 0 && userAnswers.length === 0) {
+                loadQuiz();
+            }
+        });
+        
+        // Interactive example tooltips
+        document.querySelectorAll('.suspicious-element').forEach(element => {
+            element.addEventListener('click', () => {
+                element.style.backgroundColor = '#ffcdd2';
+                setTimeout(() => {
+                    element.style.backgroundColor = '#ffebee';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
